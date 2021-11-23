@@ -1,4 +1,6 @@
 # Ignore IDE specific stuff
+# maven stuff
+target/
 # netbeans stuff
 build/
 build.xml
