@@ -1,5 +1,4 @@
-
-package newpackage;
+package Model;
 
 public class Node {
     public Palabra palabra; // Significado de la palabra

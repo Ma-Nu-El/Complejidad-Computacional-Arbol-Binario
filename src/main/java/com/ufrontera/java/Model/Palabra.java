@@ -1,9 +1,8 @@
-
-package newpackage;
+package Model;
 
 
 public class Palabra {
-     private String nombre;
+    private String nombre;
     private String significado;
     private String clasificacion;
 
