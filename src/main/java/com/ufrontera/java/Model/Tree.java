@@ -1,5 +1,4 @@
-
-package Model;
+package com.ufrontera.java.Model;
 
 import java.util.ArrayList;
 

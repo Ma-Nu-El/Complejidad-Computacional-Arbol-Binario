@@ -1,4 +1,4 @@
-package Model;
+package com.ufrontera.java.Model;
 
 
 public class Palabra {

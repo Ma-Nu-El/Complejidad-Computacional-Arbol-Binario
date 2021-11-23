@@ -1,5 +1,5 @@
-package com.ufrontera.java;
-import Model.tree;
+package com.ufrontera.java.Controller;
+import com.ufrontera.java.Model.Tree;
 
 /**
 * apellido1-nombre1_apellido2-nombre2
