@@ -18,7 +18,7 @@ public class App {
         System.out.println("EVALUACIÓN 2:");
         System.out.println("");
 
-        tree palabras = new tree(); //creamos el arbol donde se almacenaran las palabras
+        Tree palabras = new Tree(); //creamos el arbol donde se almacenaran las palabras
 
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------");
         palabras.agregar("Saltar", "Elevarse del suelo u otra superficie con impulso para caer en el mismo lugar o en otro.", "Verbo");

@@ -3,12 +3,12 @@ package Model;
 
 import java.util.ArrayList;
 
-public class tree {
+public class Tree {
         private Node root; //Primer nodo del arbol
     private ArrayList<Palabra> palabras; //lista para obtener los objetos del arbol
 
     //Constructor
-    public tree() {
+    public Tree() {
         root = null;
     }
 
