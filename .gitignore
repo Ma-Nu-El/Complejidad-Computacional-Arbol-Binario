@@ -1,0 +1,8 @@
+# Ignore IDE specific stuff
+# netbeans stuff
+build/
+build.xml
+manifest.mf
+nbproject/
+# intellij stuff
+*.iml
