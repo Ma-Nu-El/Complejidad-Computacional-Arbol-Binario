@@ -16,7 +16,7 @@ public class App {
         System.out.println("EVALUACIÓN 2:");
         System.out.println("");
 
-        //creamos el arbol donde se almacenaran las palabras
+        // Creamos el arbol donde se almacenaran las palabras
         Tree palabras = new Tree();
 
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------");
