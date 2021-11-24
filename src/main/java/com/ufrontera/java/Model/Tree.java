@@ -151,37 +151,8 @@ public class Tree {
         return true; // exito al eliminar
     } // Fin eliminar()
 
-    // Devuelve el nodo sucesor
-    private Node getSuccessor(Node delNode) {
-        Node successorParent = delNode;
-        Node successor = delNode;
-        Node current = delNode.hijoDerecho;
-        while (current != null) {
-            successorParent = successor;
-            successor = current;
-            current = current.hijoIzquierdo;
-        }
-
-        if (successor != delNode.hijoDerecho) {
-
-            successorParent.hijoIzquierdo = successor.hijoDerecho;
-
-            successor.hijoDerecho = delNode.hijoDerecho;
-        }
-        return successor;
-    } // Fin getSuccessor()
-
-    private void inOrder(Node node) {
-        if (node == null) {
-            return;
-        }
-        inOrder(node.hijoIzquierdo);
-        node.getPalabra().mostrarPalabra();
-        inOrder(node.hijoDerecho);
-    } // Fin inOrder()
-
     public void ordenar() {
-        inOrder(root);
+        inOrder(this.root);
     } // Fin ordenar()
 
     // Compara el orden de las palabras
