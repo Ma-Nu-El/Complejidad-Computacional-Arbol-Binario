@@ -170,7 +170,8 @@ public class Tree {
             'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w',
             'x', 'y', 'z'};
 
-        int cont = 0, limite = 0; // contador y largo del titulo mas pequeño (limite)
+        // contador y largo del titulo mas pequeño (limite)
+        int cont = 0, limite = 0;
 
         if (nombreNuevo.length() > nombreActual.length()) {
             limite = nombreActual.length();
