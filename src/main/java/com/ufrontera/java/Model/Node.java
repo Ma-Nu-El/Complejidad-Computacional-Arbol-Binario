@@ -13,9 +13,4 @@ public class Node {
         return palabra;
     }
 
-    class palabra {
-
-        public palabra() {
-        }
-    }
 }
