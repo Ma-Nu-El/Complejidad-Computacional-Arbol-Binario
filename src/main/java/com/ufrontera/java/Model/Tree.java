@@ -17,7 +17,7 @@ public class Tree {
     // Encontrar el nodo que tenga la palabra dada
     public Palabra find(String nombre) {
         // Se define la ubicación actual en el primer nodo
-        Node current = root;
+        Node current = this.root;
 
         while (!current.palabra.getNombre().toLowerCase().equals(nombre.toLowerCase())) {
 
