@@ -12,7 +12,9 @@ public class App {
 
         public void agregarPalabras() {
 
-                // Nótese que están desordenadas
+                /** Nótese que están desordenadas, luego el programa
+                 *  las ordena.
+                 */
                 palabras.agregar("Saltar", "Elevarse del suelo u otra superficie con impulso para caer en el mismo lugar o en otro.", "Verbo");
                 palabras.agregar("Volar", "Moverse por el aire usando alas o un medio artificial.", "Verbo");
                 palabras.agregar("Caminar", "Andar de un lugar a otro usando las piernas", "Verbo");
