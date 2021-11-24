@@ -13,8 +13,8 @@ public class Palabra {
     }
 
     public void mostrarPalabra() {
-        System.out.println("Nombre: " + nombre + " | Significado " + significado + " | Clasificación: " + clasificacion);
-
+        //System.out.println("Nombre: " + nombre + " | Significado " + significado + " | Clasificación: " + clasificacion);
+        System.out.println(nombre + "\t\t | Significado: " + significado + "\t | Clasificación: " + clasificacion);
     }
 
     // Getters and setters
