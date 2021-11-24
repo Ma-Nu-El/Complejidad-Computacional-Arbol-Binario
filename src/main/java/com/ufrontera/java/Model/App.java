@@ -29,13 +29,15 @@ public class App {
         }
 
         public void buscarPalabra() {
-                System.out.println("-Palabra buscada:");
-                palabras.find("Saltar").mostrarPalabra();
+                String palabraBuscada = "Saltar";
+                System.out.println("-Palabra buscada: " + palabraBuscada);
+                palabras.find(palabraBuscada).mostrarPalabra();
         }
 
         public void eliminarPalabra() {
-                System.out.println("-Eliminar palabra:");
-                palabras.eliminar("Saltar");
+                String palabraAEliminar = "Saltar";
+                System.out.println("-Eliminar palabra: " + palabraAEliminar);
+                palabras.eliminar(palabraAEliminar);
         }
 
         public void ordenarPalabras() {
