@@ -17,6 +17,7 @@ public class Palabra {
 
     }
 
+    // Getters and setters
     public String getNombre() {
         return nombre;
     }
