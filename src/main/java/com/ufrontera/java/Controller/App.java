@@ -11,14 +11,13 @@ import com.ufrontera.java.Model.Tree;
 *           Fuica Morales Manuel
 */
 
-
-
 public class App {
     public static void main( String[] args ) {
         System.out.println("EVALUACIÓN 2:");
         System.out.println("");
 
-        Tree palabras = new Tree(); //creamos el arbol donde se almacenaran las palabras
+        //creamos el arbol donde se almacenaran las palabras
+        Tree palabras = new Tree();
 
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------");
         palabras.agregar("Saltar", "Elevarse del suelo u otra superficie con impulso para caer en el mismo lugar o en otro.", "Verbo");
