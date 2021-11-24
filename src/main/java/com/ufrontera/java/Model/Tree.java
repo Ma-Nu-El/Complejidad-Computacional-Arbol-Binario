@@ -22,9 +22,9 @@ public class Tree {
         while (!current.palabra.getNombre().toLowerCase().equals(nombre.toLowerCase())) {
 
             if (irIzquierda(nombre.toLowerCase(), current.palabra.getNombre().toLowerCase())) {
-                current = current.leftChild;
+                current = current.hijoIzquierdo;
             } else {
-                current = current.rightChild;
+                current = current.hijoDerecho;
             }
             if (current == null) {
                 return null;
@@ -47,15 +47,15 @@ public class Tree {
                 parent = current;
 
                 if (irIzquierda(nombre.toLowerCase(), current.palabra.getNombre().toLowerCase())) {
-                    current = current.leftChild;
+                    current = current.hijoIzquierdo;
                     if (current == null) {
-                        parent.leftChild = newNode;
+                        parent.hijoIzquierdo = newNode;
                         return;
                     }
                 } else {
-                    current = current.rightChild;
+                    current = current.hijoDerecho;
                     if (current == null) {
-                        parent.rightChild = newNode;
+                        parent.hijoDerecho = newNode;
                         return;
                     }
                 }
@@ -75,10 +75,10 @@ public class Tree {
 
             if (irIzquierda(nombre.toLowerCase(), current.palabra.getNombre().toLowerCase())) {
                 isLeftChild = true;
-                current = current.leftChild;
+                current = current.hijoIzquierdo;
             } else {
                 isLeftChild = false;
-                current = current.rightChild;
+                current = current.hijoDerecho;
             }
             if (current == null) {
                 return false;
@@ -86,32 +86,32 @@ public class Tree {
         } // Se obtiene el nodo a eliminar
 
         // Si no tiene hijos, se borra el nodo
-        if (current.leftChild == null && current.rightChild == null) {
+        if (current.hijoIzquierdo == null && current.hijoDerecho == null) {
             if (current == root) {
                 root = null;
             } else if (isLeftChild) {
-                parent.leftChild = null;
+                parent.hijoIzquierdo = null;
             } else {
-                parent.rightChild = null;
+                parent.hijoDerecho = null;
             }
 
-        } else if (current.rightChild == null) {
+        } else if (current.hijoDerecho == null) {
             if (current == root) {
-                root = current.leftChild;
+                root = current.hijoIzquierdo;
             } else if (isLeftChild) {
-                parent.leftChild = current.leftChild;
+                parent.hijoIzquierdo = current.hijoIzquierdo;
             } else {
-                parent.rightChild = current.leftChild;
+                parent.hijoDerecho = current.hijoIzquierdo;
             }
 
             // Si no tiene hijo izquierdo, se reemplaza por el subarbol derecho
-        } else if (current.leftChild == null) {
+        } else if (current.hijoIzquierdo == null) {
             if (current == root) {
-                root = current.rightChild;
+                root = current.hijoDerecho;
             } else if (isLeftChild) {
-                parent.leftChild = current.rightChild;
+                parent.hijoIzquierdo = current.hijoDerecho;
             } else {
-                parent.rightChild = current.rightChild;
+                parent.hijoDerecho = current.hijoDerecho;
             }
         } else {
             Node successor = getSuccessor(current);
@@ -119,11 +119,11 @@ public class Tree {
             if (current == root) {
                 root = successor;
             } else if (isLeftChild) {
-                parent.leftChild = successor;
+                parent.hijoIzquierdo = successor;
             } else {
-                parent.rightChild = successor;
+                parent.hijoDerecho = successor;
             }
-            successor.leftChild = current.leftChild;
+            successor.hijoIzquierdo = current.hijoIzquierdo;
         }
         return true; // exito al eliminar
     } // Fin eliminar()
@@ -132,18 +132,18 @@ public class Tree {
     private Node getSuccessor(Node delNode) {
         Node successorParent = delNode;
         Node successor = delNode;
-        Node current = delNode.rightChild;
+        Node current = delNode.hijoDerecho;
         while (current != null) {
             successorParent = successor;
             successor = current;
-            current = current.leftChild;
+            current = current.hijoIzquierdo;
         }
 
-        if (successor != delNode.rightChild) {
+        if (successor != delNode.hijoDerecho) {
 
-            successorParent.leftChild = successor.rightChild;
+            successorParent.hijoIzquierdo = successor.hijoDerecho;
 
-            successor.rightChild = delNode.rightChild;
+            successor.hijoDerecho = delNode.hijoDerecho;
         }
         return successor;
     } // Fin getSuccessor()
@@ -152,9 +152,9 @@ public class Tree {
         if (node == null) {
             return;
         }
-        inOrder(node.leftChild);
+        inOrder(node.hijoIzquierdo);
         node.getPalabra().mostrarPalabra();
-        inOrder(node.rightChild);
+        inOrder(node.hijoDerecho);
     } // Fin inOrder()
 
     public void ordenar() {
