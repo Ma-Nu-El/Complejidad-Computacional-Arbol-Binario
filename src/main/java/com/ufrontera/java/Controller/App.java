@@ -5,8 +5,11 @@ import com.ufrontera.java.Model.Tree;
 /**
  * apellido1-nombre1_apellido2-nombre2
  *
- * [2021-11-23 Mar] Authores: hijerra-camilo_sepulveda-jose_fuica-morales-manuel
- * Hijerra Camilo Sepulveda Jose Fuica Morales Manuel
+ * [2021-11-23 Mar]
+ * Authores: hijerra-camilo_sepulveda-jose_fuica-morales-manuel
+ *           Hijerra Camilo
+ *           Sepulveda Jose
+ *           Fuica Morales Manuel
  */
 
 public class App {
