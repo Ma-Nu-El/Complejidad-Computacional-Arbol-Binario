@@ -26,8 +26,8 @@ public class Main {
         aplicacion.mostrarPalabras();
         System.out.println(hline);
 
-        aplicacion.ordenarPalabras();
-        System.out.println(hline);
+        // aplicacion.ordenarPalabras();
+        // System.out.println(hline);
 
         aplicacion.buscarPalabra();
         System.out.println(hline);
