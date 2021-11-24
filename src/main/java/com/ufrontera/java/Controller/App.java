@@ -32,7 +32,7 @@ public class App {
         palabras.agregar("Jugar", "Realizar una actividad o hacer una cosa, generalmente ejercitando alguna capacidad o destreza", "Verbo");
         palabras.agregar("Cantar", "Producir sonidos armoniosos o emitir su voz", "Verbo");
         palabras.agregar("Zarpar", "Trabajar con la zapa", "Verbo");
-        palabras.agregar("Correr", "Trabajar con la zapa", "Verbo");
+        palabras.agregar("Correr", "Desplazarse rápidamente", "Verbo");
         System.out.println("-------------------------------------------------------------------------------------------------------------------------------------");
 
         System.out.println("-Palabras agregadas al diccionario:");
