@@ -91,16 +91,16 @@ public class Tree {
     public boolean eliminar(String nombre) {
         Node current = root;
         Node parent = root;
-        boolean isLeftChild = true;
+        boolean esHijoIzquierdo = true;
 
         while (!current.palabra.getNombre().toLowerCase().equals(nombre.toLowerCase())) {
             parent = current;
 
             if (irIzquierda(nombre.toLowerCase(), current.palabra.getNombre().toLowerCase())) {
-                isLeftChild = true;
+                esHijoIzquierdo = true;
                 current = current.hijoIzquierdo;
             } else {
-                isLeftChild = false;
+                esHijoIzquierdo = false;
                 current = current.hijoDerecho;
             }
             if (current == null) {
@@ -112,7 +112,7 @@ public class Tree {
         if (current.hijoIzquierdo == null && current.hijoDerecho == null) {
             if (current == root) {
                 root = null;
-            } else if (isLeftChild) {
+            } else if (esHijoIzquierdo) {
                 parent.hijoIzquierdo = null;
             } else {
                 parent.hijoDerecho = null;
@@ -121,7 +121,7 @@ public class Tree {
         } else if (current.hijoDerecho == null) {
             if (current == root) {
                 root = current.hijoIzquierdo;
-            } else if (isLeftChild) {
+            } else if (esHijoIzquierdo) {
                 parent.hijoIzquierdo = current.hijoIzquierdo;
             } else {
                 parent.hijoDerecho = current.hijoIzquierdo;
@@ -131,7 +131,7 @@ public class Tree {
         } else if (current.hijoIzquierdo == null) {
             if (current == root) {
                 root = current.hijoDerecho;
-            } else if (isLeftChild) {
+            } else if (esHijoIzquierdo) {
                 parent.hijoIzquierdo = current.hijoDerecho;
             } else {
                 parent.hijoDerecho = current.hijoDerecho;
@@ -141,7 +141,7 @@ public class Tree {
 
             if (current == root) {
                 root = successor;
-            } else if (isLeftChild) {
+            } else if (esHijoIzquierdo) {
                 parent.hijoIzquierdo = successor;
             } else {
                 parent.hijoDerecho = successor;
