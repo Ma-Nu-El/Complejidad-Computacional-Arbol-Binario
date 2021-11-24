@@ -3,16 +3,21 @@ package com.ufrontera.java.Model;
 import java.util.ArrayList;
 
 public class Tree {
-        private Node root; //Primer nodo del arbol
-    private ArrayList<Palabra> palabras; //lista para obtener los objetos del arbol
+    //Primer nodo del arbol
+    private Node root;
+
+    //Lista para almacenar los objetos del arbol
+    private ArrayList<Palabra> palabras;
 
     //Constructor
     public Tree() {
         root = null;
     }
 
-    public Palabra find(String nombre) { // encontrar el nodo q tenga la palabra dada
-        Node current = root;   // se define la ubicación actual en el primer nodo
+    // Encontrar el nodo que tenga la palabra dada
+    public Palabra find(String nombre) {
+        // Se define la ubicación actual en el primer nodo
+        Node current = root;
 
         while (!current.palabra.getNombre().toLowerCase().equals(nombre.toLowerCase())) {
 
@@ -26,8 +31,9 @@ public class Tree {
             }
         }
         return current.palabra;
-    }  // end find()
+    } // Fin find()
 
+    // Agregar un nodo que contenga la palabra, significado y clasificacion
     public void agregar(String nombre, String significado, String clasificacion) {
         Node newNode = new Node();
         newNode.palabra = new Palabra(nombre, significado, clasificacion);
@@ -56,7 +62,7 @@ public class Tree {
             }
 
         }
-    }//Fin agregar
+    } // Fin agregar()
 
     // Elimina el nodo que tenga la palabra dado por el usuario
     public boolean eliminar(String nombre) {
@@ -79,7 +85,7 @@ public class Tree {
             }
         } // Se obtiene el nodo a eliminar
 
-        // si no tiene hijos, se borra el nodo
+        // Si no tiene hijos, se borra el nodo
         if (current.leftChild == null && current.rightChild == null) {
             if (current == root) {
                 root = null;
@@ -98,7 +104,7 @@ public class Tree {
                 parent.rightChild = current.leftChild;
             }
 
-            // si no tiene hijo izquierdo, se reemplaza por el subarbol derecho
+            // Si no tiene hijo izquierdo, se reemplaza por el subarbol derecho
         } else if (current.leftChild == null) {
             if (current == root) {
                 root = current.rightChild;
@@ -120,7 +126,7 @@ public class Tree {
             successor.leftChild = current.leftChild;
         }
         return true; // exito al eliminar
-    }//Fin eliminar
+    } // Fin eliminar()
 
     // Devuelve el nodo sucesor
     private Node getSuccessor(Node delNode) {
@@ -140,7 +146,7 @@ public class Tree {
             successor.rightChild = delNode.rightChild;
         }
         return successor;
-    }
+    } // Fin getSuccessor()
 
     private void inOrder(Node node) {
         if (node == null) {
@@ -149,12 +155,11 @@ public class Tree {
         inOrder(node.leftChild);
         node.getPalabra().mostrarPalabra();
         inOrder(node.rightChild);
-
-    }
+    } // Fin inOrder()
 
     public void ordenar() {
         inOrder(root);
-    }
+    } // Fin ordenar()
 
     // Compara el orden de las palabras
     public static boolean irIzquierda(String nombreNuevo, String nombreActual) {
@@ -213,6 +218,6 @@ public class Tree {
             }
         }
         return irIzquierda;
-    }
+    } // Fin irIzquierda()
 
-}//Fin Tree
+} // Fin Tree{}
