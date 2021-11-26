@@ -13,19 +13,11 @@ public class Palabra {
     }
 
     public void mostrarPalabra() {
-        //System.out.println("Nombre: " + nombre + " | Significado " + significado + " | Clasificación: " + clasificacion);
-        /** TODO: Hacer que la impresión sea homogénea?
-         *
-         *  La impresion queda desordenada cuando se le agregan palabras muy
-         *  largas, como 'escribir' o 'aplaudir'.
-         *  Se le agregaron tabs --- '\t' --- pero soluciona parcialmente
-         *  el problema.
-         *
-         */
+      
         System.out.println(nombre + "\t\t | Significado: " + significado + "\t | Clasificación: " + clasificacion);
     }
 
-    // Getters and setters
+    // AGREGAMOS GETTERS Y SETTERS PARA LLAMAR Y MODIFICAR LOS ATRIBUTOS DE LA CLASE
     public String getNombre() {
         return nombre;
     }

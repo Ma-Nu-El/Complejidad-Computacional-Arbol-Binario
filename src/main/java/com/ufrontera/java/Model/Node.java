@@ -1,5 +1,7 @@
 package com.ufrontera.java.Model;
-
+/*
+EXTRAIDO DEL CAMPUS VIRTUAL
+*/
 public class Node {
     public Palabra palabra; // Significado de la palabra
     public Node hijoIzquierdo; // Nodo hijo izquierdo

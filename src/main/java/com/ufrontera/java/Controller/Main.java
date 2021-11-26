@@ -19,19 +19,23 @@ public class Main {
         System.out.println(hline);
 
         App aplicacion = new App();
-
+        /*EN ESTE CODGO INVOCAMOS EL METODO AGREGAR PALABRA*/
         aplicacion.agregarPalabras();
         System.out.println(hline);
 
+         /*EN ESTE CODGO INVOCAMOS EL METODO MOSTRAR PALABRA*/
         aplicacion.mostrarPalabras();
         System.out.println(hline);
 
+         /*EN ESTE CODGO INVOCAMOS EL METODO BUSCAR PALABRA*/
         aplicacion.buscarPalabra();
         System.out.println(hline);
 
+         /*EN ESTE CODGO INVOCAMOS EL METODO ELIMINAR PALABRA*/
         aplicacion.eliminarPalabra();
         System.out.println(hline);
 
+         /*EN ESTE CODGO INVOCAMOS EL METODO MOSTRAR PALABRA*/
         aplicacion.mostrarPalabras();
         System.out.println(hline);
 

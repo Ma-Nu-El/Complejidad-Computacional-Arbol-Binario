@@ -39,7 +39,9 @@ public class Tree {
 
     // Encontrar el nodo que tenga la palabra dada
     public Palabra find(String nombre) {
-        // Se define la ubicación actual en el primer nodo
+        /*
+        SE DEFINE LA UBICACIÓN DE LA PALABRA PARA POSTERIORMENTE SER ORDENARDA Y ASIGNARLE UNA POSICIÓN DEFINIDA
+        */
         Node current = this.root;
 
         while (!current.palabra.getNombre().toLowerCase().equals(nombre.toLowerCase())) {
@@ -87,7 +89,9 @@ public class Tree {
         }
     } // Fin agregar()
 
-    // Elimina el nodo que tenga la palabra dado por el usuario
+    /*
+    ELIMINA LA PALABRA INDICADA POR EL USUARIO EN LA CLASE APP
+    */
     public boolean eliminar(String nombre) {
         Node current = root;
         Node parent = root;
@@ -148,14 +152,16 @@ public class Tree {
             }
             successor.hijoIzquierdo = current.hijoIzquierdo;
         }
-        return true; // exito al eliminar
+        return true; 
     } // Fin eliminar()
 
     public void ordenar() {
         inOrder(this.root);
     } // Fin ordenar()
 
-    // Compara el orden de las palabras
+    /*
+    COMPARA LETRA POR LETRA PARA LUEGO ORDENAR LAS PALABRAS
+    */
     public static boolean irIzquierda(String nombreNuevo, String nombreActual) {
         boolean irIzquierda = false;
 
@@ -164,7 +170,7 @@ public class Tree {
             'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w',
             'x', 'y', 'z'};
 
-        // contador y largo del titulo mas pequeño (limite)
+        
         int cont = 0, limite = 0;
 
         if (nombreNuevo.length() > nombreActual.length()) {
