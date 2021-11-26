@@ -13,10 +13,11 @@ public class Palabra {
     }
 
     public void mostrarPalabra() {
-        System.out.println("Nombre: " + nombre + " | Significado " + significado + " | Clasificación: " + clasificacion);
-
+      
+        System.out.println(nombre + "\t\t | Significado: " + significado + "\t | Clasificación: " + clasificacion);
     }
 
+    // AGREGAMOS GETTERS Y SETTERS PARA LLAMAR Y MODIFICAR LOS ATRIBUTOS DE LA CLASE
     public String getNombre() {
         return nombre;
     }

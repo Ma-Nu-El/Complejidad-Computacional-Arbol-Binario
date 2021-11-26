@@ -1,33 +1,64 @@
 package com.ufrontera.java.Model;
 
-import java.util.ArrayList;
-
 public class Tree {
-        private Node root; //Primer nodo del arbol
-    private ArrayList<Palabra> palabras; //lista para obtener los objetos del arbol
+    // Primer nodo del arbol
+    private Node root;
 
-    //Constructor
+    private Node getSuccessor(Node delNode) {
+        Node successorParent = delNode;
+        Node successor = delNode;
+        Node current = delNode.hijoDerecho;
+        while (current != null) {
+            successorParent = successor;
+            successor = current;
+            current = current.hijoIzquierdo;
+        }
+
+        if (successor != delNode.hijoDerecho) {
+
+            successorParent.hijoIzquierdo = successor.hijoDerecho;
+
+            successor.hijoDerecho = delNode.hijoDerecho;
+        }
+        return successor;
+    } // Fin getSuccessor()
+
+    private void inOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        inOrder(node.hijoIzquierdo);
+        node.getPalabra().mostrarPalabra();
+        inOrder(node.hijoDerecho);
+    } // Fin inOrder()
+
+    // Constructor
     public Tree() {
         root = null;
     }
 
-    public Palabra find(String nombre) { // encontrar el nodo q tenga la palabra dada
-        Node current = root;   // se define la ubicación actual en el primer nodo
+    // Encontrar el nodo que tenga la palabra dada
+    public Palabra find(String nombre) {
+        /*
+        SE DEFINE LA UBICACIÓN DE LA PALABRA PARA POSTERIORMENTE SER ORDENARDA Y ASIGNARLE UNA POSICIÓN DEFINIDA
+        */
+        Node current = this.root;
 
         while (!current.palabra.getNombre().toLowerCase().equals(nombre.toLowerCase())) {
 
             if (irIzquierda(nombre.toLowerCase(), current.palabra.getNombre().toLowerCase())) {
-                current = current.leftChild;
+                current = current.hijoIzquierdo;
             } else {
-                current = current.rightChild;
+                current = current.hijoDerecho;
             }
             if (current == null) {
                 return null;
             }
         }
         return current.palabra;
-    }  // end find()
+    } // Fin find()
 
+    // Agregar un nodo que contenga la palabra, significado y clasificacion
     public void agregar(String nombre, String significado, String clasificacion) {
         Node newNode = new Node();
         newNode.palabra = new Palabra(nombre, significado, clasificacion);
@@ -41,122 +72,96 @@ public class Tree {
                 parent = current;
 
                 if (irIzquierda(nombre.toLowerCase(), current.palabra.getNombre().toLowerCase())) {
-                    current = current.leftChild;
+                    current = current.hijoIzquierdo;
                     if (current == null) {
-                        parent.leftChild = newNode;
+                        parent.hijoIzquierdo = newNode;
                         return;
                     }
                 } else {
-                    current = current.rightChild;
+                    current = current.hijoDerecho;
                     if (current == null) {
-                        parent.rightChild = newNode;
+                        parent.hijoDerecho = newNode;
                         return;
                     }
                 }
             }
 
         }
-    }//Fin agregar
+    } // Fin agregar()
 
-    // Elimina el nodo que tenga la palabra dado por el usuario
+    /*
+    ELIMINA LA PALABRA INDICADA POR EL USUARIO EN LA CLASE APP
+    */
     public boolean eliminar(String nombre) {
         Node current = root;
         Node parent = root;
-        boolean isLeftChild = true;
+        boolean esHijoIzquierdo = true;
 
         while (!current.palabra.getNombre().toLowerCase().equals(nombre.toLowerCase())) {
             parent = current;
 
             if (irIzquierda(nombre.toLowerCase(), current.palabra.getNombre().toLowerCase())) {
-                isLeftChild = true;
-                current = current.leftChild;
+                esHijoIzquierdo = true;
+                current = current.hijoIzquierdo;
             } else {
-                isLeftChild = false;
-                current = current.rightChild;
+                esHijoIzquierdo = false;
+                current = current.hijoDerecho;
             }
             if (current == null) {
                 return false;
             }
         } // Se obtiene el nodo a eliminar
 
-        // si no tiene hijos, se borra el nodo
-        if (current.leftChild == null && current.rightChild == null) {
+        // Si no tiene hijos, se borra el nodo
+        if (current.hijoIzquierdo == null && current.hijoDerecho == null) {
             if (current == root) {
                 root = null;
-            } else if (isLeftChild) {
-                parent.leftChild = null;
+            } else if (esHijoIzquierdo) {
+                parent.hijoIzquierdo = null;
             } else {
-                parent.rightChild = null;
+                parent.hijoDerecho = null;
             }
 
-        } else if (current.rightChild == null) {
+        } else if (current.hijoDerecho == null) {
             if (current == root) {
-                root = current.leftChild;
-            } else if (isLeftChild) {
-                parent.leftChild = current.leftChild;
+                root = current.hijoIzquierdo;
+            } else if (esHijoIzquierdo) {
+                parent.hijoIzquierdo = current.hijoIzquierdo;
             } else {
-                parent.rightChild = current.leftChild;
+                parent.hijoDerecho = current.hijoIzquierdo;
             }
 
-            // si no tiene hijo izquierdo, se reemplaza por el subarbol derecho
-        } else if (current.leftChild == null) {
+            // Si no tiene hijo izquierdo, se reemplaza por el subarbol derecho
+        } else if (current.hijoIzquierdo == null) {
             if (current == root) {
-                root = current.rightChild;
-            } else if (isLeftChild) {
-                parent.leftChild = current.rightChild;
+                root = current.hijoDerecho;
+            } else if (esHijoIzquierdo) {
+                parent.hijoIzquierdo = current.hijoDerecho;
             } else {
-                parent.rightChild = current.rightChild;
+                parent.hijoDerecho = current.hijoDerecho;
             }
         } else {
             Node successor = getSuccessor(current);
 
             if (current == root) {
                 root = successor;
-            } else if (isLeftChild) {
-                parent.leftChild = successor;
+            } else if (esHijoIzquierdo) {
+                parent.hijoIzquierdo = successor;
             } else {
-                parent.rightChild = successor;
+                parent.hijoDerecho = successor;
             }
-            successor.leftChild = current.leftChild;
+            successor.hijoIzquierdo = current.hijoIzquierdo;
         }
-        return true; // exito al eliminar
-    }//Fin eliminar
-
-    // Devuelve el nodo sucesor
-    private Node getSuccessor(Node delNode) {
-        Node successorParent = delNode;
-        Node successor = delNode;
-        Node current = delNode.rightChild;
-        while (current != null) {
-            successorParent = successor;
-            successor = current;
-            current = current.leftChild;
-        }
-
-        if (successor != delNode.rightChild) {
-
-            successorParent.leftChild = successor.rightChild;
-
-            successor.rightChild = delNode.rightChild;
-        }
-        return successor;
-    }
-
-    private void inOrder(Node node) {
-        if (node == null) {
-            return;
-        }
-        inOrder(node.leftChild);
-        node.getPalabra().mostrarPalabra();
-        inOrder(node.rightChild);
-
-    }
+        return true; 
+    } // Fin eliminar()
 
     public void ordenar() {
-        inOrder(root);
-    }
+        inOrder(this.root);
+    } // Fin ordenar()
 
-    // Compara el orden de las palabras
+    /*
+    COMPARA LETRA POR LETRA PARA LUEGO ORDENAR LAS PALABRAS
+    */
     public static boolean irIzquierda(String nombreNuevo, String nombreActual) {
         boolean irIzquierda = false;
 
@@ -165,7 +170,8 @@ public class Tree {
             'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w',
             'x', 'y', 'z'};
 
-        int cont = 0, limite = 0; // contador y largo del titulo mas pequeño (limite)
+        
+        int cont = 0, limite = 0;
 
         if (nombreNuevo.length() > nombreActual.length()) {
             limite = nombreActual.length();
@@ -213,6 +219,6 @@ public class Tree {
             }
         }
         return irIzquierda;
-    }
+    } // Fin irIzquierda()
 
-}//Fin Tree
+} // Fin Tree{}
